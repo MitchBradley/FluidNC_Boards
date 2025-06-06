@@ -1,0 +1,258 @@
+template:
+  name: board
+  parents: top
+  value:
+    board: 6x
+    stepping:
+      engine: I2S_STREAM
+      pulse_us: 2
+      dir_delay_us: 1
+      disable_delay_us: 0
+    i2so:
+      bck_pin: gpio.22
+      data_pin: gpio.21
+      ws_pin: gpio.17
+    spi:
+      miso_pin: gpio.19
+      mosi_pin: gpio.23
+      sck_pin: gpio.18
+    sdcard:
+      card_detect_pin: NO_PIN
+      cs_pin: gpio.5
+
+template:
+  name: driver1
+  legend: Motor1
+  parents: {motor}
+  value:
+    standard_stepper:
+      step_pin: I2SO.2
+      direction_pin: I2SO.1
+      disable_pin: I2SO.0
+
+template:
+  name: driver2
+  legend: Motor2
+  parents: {motor}
+  value:
+    standard_stepper:
+      step_pin: I2SO.5
+      direction_pin: I2SO.4
+      disable_pin: I2SO.7
+
+template:
+  name: driver3
+  legend: Motor3
+  parents: {motor}
+  value:
+    standard_stepper:
+      step_pin: I2SO.10
+      direction_pin: I2SO.9
+      disable_pin: I2SO.8
+
+template:
+  name: driver4
+  legend: Motor4
+  parents: {motor}
+  value:
+    standard_stepper:
+      step_pin: I2SO.13
+      direction_pin: I2SO.12
+      disable_pin: I2SO.15
+
+template:
+  name: driver5
+  legend: Motor5
+  parents: {motor}
+  value:
+    standard_stepper:
+      step_pin: I2SO.18
+      direction_pin: I2SO.17
+      disable_pin: I2SO.16
+
+template:
+  name: driver6
+  legend: Motor6
+  parents: {motor}
+  value:
+    standard_stepper:
+      step_pin: I2SO.21
+      direction_pin: I2SO.20
+      disable_pin: I2SO.23
+
+template:
+  name: rs485
+  legend: RS485
+  parents: {uart}
+  value:
+    txd_pin: gpio.15
+    rxd_pin: gpio.16
+    rts_pin: gpio.14
+    baud: 9600
+    mode: 8N1
+
+output_type:
+  name: opto_gnd
+  circuit: http://wiki.fluidnc.com/en/hardware/official/6x_CNC_Controller#h-0-10v
+
+output_type:
+  name: 10V
+  max_volts: 10
+
+output_type:
+  name: MOSFET
+
+output_type:
+  name: 5V
+  max_volts: 5
+
+template:
+  name: optoisolated_output1
+  legend: Out1/Fwd
+  output_type: opto_gnd
+  parents: {output}
+  value:
+    gpio.15
+
+template:
+  name: optoisolated_output2
+  legend: Out2/Rev
+  output_type: opto_gnd
+  parents: {output}
+  value:
+    gpio.14
+
+template:
+  name: SpindlePWM
+  legend: 0-10V
+  output_type: 10V
+  parents: {output}
+  value:
+    gpio.13
+
+template:
+  name: mosfet_output0
+  legend: gpio.12 (MOSFET)
+  output_type: MOSFET
+  parents: {output}
+  value:
+    gpio.12
+
+template:
+  name: mosfet_output1
+  legend: gpio.4 (MOSFET)
+  output_type: MOSFET
+  parents: {output}
+  value:
+    gpio.4
+
+template:
+  name: 5V_output0
+  legend: gpio.12
+  output_type: 5V
+  parents: {output}
+  value:
+    gpio.12
+
+template:
+  name: 5V_output1
+  legend: gpio.4
+  output_type: 5V
+  parents: {output}
+  value:
+    gpio.4
+
+template:
+  name: 5V_output2
+  legend: Out2/Rev
+  output_type: 5V
+  parents: {output}
+  value:
+    gpio.14
+
+template:
+  name: 5V_output3
+  legend: Out1/Fwd
+  output_type: 5V
+  parents: {output}
+  value:
+    gpio.13
+
+input_type:
+  name: opto_5v_300
+  circuit: http://wiki.fluidnc.com/en/hardware/official/6x_CNC_Controller#inputs
+  type: optoisolated
+  polarity: common_anode
+  max_volts: 5
+  rs_ohms: 300
+
+template:
+  name: input0
+  legend: gpio.2
+  parents: {input}
+  input_type: opto_5v_300
+  value:
+    gpio.2
+
+template:
+  name: input1
+  legend: gpio.26
+  parents: {input}
+  input_type: opto_5v_300
+  value:
+    gpio.26
+
+template:
+  name: input2
+  legend: gpio.33
+  parents: {input}
+  input_type: opto_5v_300
+  value:
+    gpio.33
+
+template:
+  name: input3
+  legend: gpio.32
+  parents: {input}
+  input_type: opto_5v_300
+  value:
+    gpio.32
+
+template:
+  name: input4
+  legend: gpio.35
+  parents: {input}
+  input_type: opto_5v_300
+  value:
+    gpio.35
+
+template:
+  name: input5
+  legend: gpio.34
+  parents: {input}
+  input_type: opto_5v_300
+  value:
+    gpio.34
+
+template:
+  name: input6
+  legend: gpio.39
+  parents: {input}
+  input_type: opto_5v_300
+  value:
+    gpio.39
+
+template:
+  name: input7
+  legend: gpio.36
+  input_type: opto_5v_300
+  parents: {input}
+  value:
+    gpio.36
+
+module_slot:
+  name: module_slot0
+  legend: I/O Expansion Module
+  parents: {module}
+  pin3: gpio.25
+  pin4: gpio.27
