@@ -1,6 +1,5 @@
-template:
+board:
   name: board
-  parents: top
   value:
     board: BTT Rodent
     stepping:
@@ -19,10 +18,9 @@ template:
     sdcard:
       cs_pin: gpio.0
 
-template:
+stepper:
   name: driver0
   legend: X
-  parents: {motor}
   value:
     tmc_5160:
       step_pin: I2SO.2
@@ -32,10 +30,9 @@ template:
       spi_index: 1
       r_sense_ohms: 0.022
 
-template:
+stepper:
   name: driver0
   legend: X
-  parents: {motor}
   value:
     tmc_5160:
       step_pin: I2SO.5
@@ -45,10 +42,9 @@ template:
       spi_index: 2
       r_sense_ohms: 0.022
 
-template:
+stepper:
   name: driver0
   legend: X
-  parents: {motor}
   value:
     tmc_5160:
       step_pin: I2SO.10
@@ -58,10 +54,9 @@ template:
       spi_index: 3
       r_sense_ohms: 0.022
 
-template:
+stepper:
   name: driver0
   legend: X
-  parents: {motor}
   value:
     tmc_5160:
       step_pin: I2SO.13
@@ -71,22 +66,16 @@ template:
       spi_index: 4
       r_sense_ohms: 0.022
 
-template:
+i2c:
   name: i2c
   legend: OLED
-  parents: |
-           i2c0
-           i2c1
   value:
    sda_pin: gpio.27
    scl_pin: gpio.26
 
-template:
+uart:
   name: uart
   legend: OLED
-  parents: |
-           uart1
-           uart2
   value:
     txd_pin: gpio.27
     rxd_pin: gpio.26
@@ -110,106 +99,93 @@ output_type:
   name: 10V
   max_volts: variable
 
-template:
+input:
   name: isolated_input1
   legend: STOPX
-  parents: {input}
   input_type: opto_1000
   value:
     gpio.35
 
-template:
+input:
   name: isolated_input2
   legend: STOPY
-  parents: {input}
   input_type: opto_1000
   value:
     gpio.34
 
-template:
+input:
   name: isolated_input3
   legend: STOPZ
-  parents: {input}
   input_type: opto_1000
   value:
     gpio.33
 
-template:
+input:
   name: isolated_input4
   legend: STOPE
-  parents: {input}
   input_type: opto_1000
   value:
     gpio.32
 
-template:
+input:
   name: isolated_input5
   legend: STOPE1
-  parents: {input}
   input_type: opto_1000
   value:
     gpio.39
 
-template:
+input:
   name: isolated_input6
   legend: PROBE_EN
-  parents: {input}
   input_type: opto_1000
   value:
     gpio.36
 
-template:
+output:
   name: mosfet_output0
   legend: GPIO2
-  parents: {output}
   output_type: MOSFET
   value:
     gpio.2
 
-template:
+output:
   name: mosfet_output1
   legend: GPIO4
-  parents: {output}
   output_type: MOSFET
   value:
     gpio.4
 
-template:
+output:
   name: mosfet_output2
   legend: GPIO12
-  parents: {output}
   output_type: MOSFET
   value:
     gpio.12
 
-template:
+output:
   name: 5V_output0
   legend: Sp-Direction
-  parents: {output}
   output_type: 5V
   value:
     gpio.12
 
-template:
+output:
   name: 5V_output0
   legend: Sp-Enable
-  parents: {output}
   output_type: 5V
   value:
     gpio.25
 
-template:
+output:
   name: 5V_output0
   legend: Sp-Feedback
-  parents: {output}
   output_type: 5V
   value:
     gpio.14
 
-template:
+output:
   name: 10V_output0
   legend: SP-PWM
-  parents: {pwm_output}
   output_type: 10V
   value:
     gpio.13

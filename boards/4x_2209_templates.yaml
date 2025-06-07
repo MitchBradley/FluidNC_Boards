@@ -1,6 +1,5 @@
-template:
+board:
   name: board
-  parents: top
   value:
     board: "TMC2209 4x"
     stepping:
@@ -24,10 +23,9 @@ template:
       baud: 115200
       mode: 8N1
 
-template:
+stepper:
   name: driver0
   legend: X
-  parents: {motor}
   value:
     tmc_2209:
       step_pin: i2so.2
@@ -37,10 +35,9 @@ template:
       addr: 0
       r_sense_ohms: 0.110
 
-template:
+stepper:
   name: driver1
   legend: Y1
-  parents: {motor}
   value:
     tmc_2209:
       step_pin: i2so.5
@@ -50,10 +47,9 @@ template:
       addr: 1
       r_sense_ohms: 0.110
 
-template:
+stepper:
   name: driver2
   legend: Y2
-  parents: {motor}
   value:
     tmc_2209:
       step_pin: i2so.10
@@ -63,10 +59,9 @@ template:
       addr: 2
       r_sense_ohms: 0.110
 
-template:
+stepper:
   name: driver3
   legend: Z
-  parents: {motor}
   value:
     tmc_2209:
       step_pin: i2so.13
@@ -99,122 +94,107 @@ input_type:
   max_volts: 5
   rs_ohms: 300
 
-template:
+output:
   name: optoisolated_output1
   legend: Out1
   output_type: opto_gnd
-  parents: {output}
   value:
     gpio.15
 
-template:
+output:
   name: optoisolated_output2
   legend: Out2
   output_type: opto_gnd
-  parents: {output}
   value:
     gpio.14
 
-template:
+output:
   name: SpindlePWM
   legend: 0-10V
   output_type: 10V
-  parents: {output}
   value:
     gpio.13
 
-template:
+output:
   name: mosfet_output0
   legend: gpio.12 (MOSFET)
   output_type: MOSFET
-  parents: {output}
   value:
     gpio.12
 
-template:
+output:
   name: mosfet_output1
   legend: gpio.4 (MOSFET)
   output_type: MOSFET
-  parents: {output}
   value:
     gpio.4
 
-template:
+output:
   name: 5V_output0
   legend: gpio.12
-  parents: {output}
   output_type: 5V
   value:
     gpio.12
 
-template:
+output:
   name: 5V_output1
   legend: gpio.4
-  parents: {output}
   output_type: 5V
   value:
     gpio.4
 
-template:
+output:
   name: 5V_output2
   legend: gpio.14
-  parents: {output}
   output_type: 5V
   value:
     gpio.14
 
-template:
+output:
   name: 5V_output2
   legend: gpio.13
-  parents: {output}
   output_type: 5V
   value:
     gpio.13
 
-template:
+input:
   name: input0
   legend: gpio.33
-  parents: {input}
   input_type: opto_5v_300
   value:
     gpio.33
 
-template:
+input:
   name: input1
   legend: gpio.32
-  parents: {input}
   input_type: opto_5v_300
   value:
     gpio.32
 
-template:
+input:
   name: input2
   legend: gpio.35
-  parents: {input}
   input_type: opto_5v_300
   value:
     gpio.35
 
-template:
+input:
   name: input3
   legend: gpio.34
-  parents: {input}
   input_type: opto_5v_300
   value:
     gpio.34
 
-template:
+input:
   name: input4
   legend: gpio.39
-  parents: {input}
   input_type: opto_5v_300
   value:
     gpio.39
 
-template:
+input:
   name: input5
   legend: gpio.36
-  parents: {input}
   input_type: opto_5v_300
   value:
     gpio.36
@@ -222,6 +202,5 @@ template:
 module_slot:
   name: module_slot0
   legend: I/O Expansion Module
-  parents: {module}
   pin3: gpio.25
   pin4: gpio.27
